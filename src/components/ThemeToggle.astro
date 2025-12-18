@@ -1,0 +1,24 @@
+<button id="theme-toggle">
+  <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z"/></svg>
+</button>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+
+  // Check for saved theme in local storage
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+    document.documentElement.classList.add(currentTheme);
+  }
+
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+
+    // Save the new theme to local storage
+    let theme = 'light';
+    if (document.documentElement.classList.contains('dark')) {
+      theme = 'dark';
+    }
+    localStorage.setItem('theme', theme);
+  });
+</script>
